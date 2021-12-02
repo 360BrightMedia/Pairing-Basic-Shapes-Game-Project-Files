@@ -58,6 +58,7 @@ public class Level0Manager : MonoBehaviour
         DraggableShape.wrongAnswer += WrongAnswer;
         ShapeDraggingManager.correctAnswer += CorrectAnswer;
         ShapeDraggingManager.wrongAnswer += WrongAnswer;
+        Input.multiTouchEnabled = false;
     }
 
     void Start()
