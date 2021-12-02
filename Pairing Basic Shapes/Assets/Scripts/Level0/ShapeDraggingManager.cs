@@ -48,6 +48,7 @@ public class ShapeDraggingManager : EventTrigger
             dragging = true;
             StartCoroutine(StartVoiceInstructionAfterTime(15f));
             offset = GetMousePos() - (Vector2)transform.position;
+            Input.multiTouchEnabled = false;
         }
     }
     public void Update()
