@@ -23,6 +23,10 @@ public class ShapeDraggingManager : EventTrigger
     private float distance;
     Vector2 offset;
     public bool shapeFinished = false;
+    float minX = -359f;
+    float maxX = 359f;
+    float minY = -170f;
+    float maxY = 170f;
     public int touches;
 
 
@@ -45,12 +49,12 @@ public class ShapeDraggingManager : EventTrigger
     {
         if (canDrag && !pickedUpShape && !shapeFinished)
         {
-            touches++;
-            if (touches != 1) return;
+            //touches++;
+            //if (touches != 1) return;
             canDrop = true;
             pickedUpShape = true;
             dragging = true;
-            StartCoroutine(StartVoiceInstructionAfterTime(15f));
+            //StartCoroutine(StartVoiceInstructionAfterTime(15f));
             offset = GetMousePos() - (Vector2)transform.position;
         }
     }
@@ -59,9 +63,10 @@ public class ShapeDraggingManager : EventTrigger
         Debug.Log("Drag Check "+dragging+" / "+ canDrag);
         if (dragging && canDrag)
         {
-            if (touches != 1) return;
+            //if (touches != 1) return;
             var mousePosition = GetMousePos();
             transform.position = mousePosition - offset;
+            OutOfBounds();
         }  
     }
 
@@ -136,5 +141,26 @@ public class ShapeDraggingManager : EventTrigger
 	{
         return Camera.main.ScreenToWorldPoint(Input.mousePosition);
 	}
+
+    void OutOfBounds()
+    {
+        Debug.Log("Position of the object : " + rectTransform.anchoredPosition);
+        if (rectTransform.anchoredPosition.x < minX)
+        {
+            rectTransform.anchoredPosition = new Vector2(minX, rectTransform.anchoredPosition.y);
+        }
+        if (rectTransform.anchoredPosition.x > maxX)
+        {
+            rectTransform.anchoredPosition = new Vector2(maxX, rectTransform.anchoredPosition.y);
+        }
+        if (rectTransform.anchoredPosition.y < minY)
+        {
+            rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, minY);
+        }
+        if (rectTransform.anchoredPosition.y > maxY)
+        {
+            rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, maxY);
+        }
+    }
 
 }

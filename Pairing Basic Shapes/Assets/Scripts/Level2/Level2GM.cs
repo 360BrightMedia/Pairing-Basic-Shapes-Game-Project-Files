@@ -207,7 +207,7 @@ public class Level2GM : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-        if(Constants.rewards > 40)
+		if (!Constants.Level2.firstTimeLevel)
 		{
             progressImages[9].gameObject.SetActive(true);
             Level3.gameObject.SetActive(true);
@@ -215,7 +215,9 @@ public class Level2GM : MonoBehaviour
             mascot.gameObject.SetActive(false);
             Time.timeScale = 1f;
             setNumber = 0;
-            Constants.Level2.canLoadSavedScene = true;
+            StopAllCoroutines();
+            sets[0].SetActive(true);
+            boxParent.SetActive(true);
         }
         if (Constants.Level2.canLoadSavedScene)
         {
@@ -1991,7 +1993,11 @@ public class Level2GM : MonoBehaviour
     {
         StopAllCoroutines();
         KillAllTweens();
+        setNumber = 0;
+        Debug.Log("SetNumber : " + setNumber);
+        Constants.Level2.firstTimeLevel = false;
         Time.timeScale = 1f;
+
         SceneLoader.instance.LoadNextLevel(Constants.Level2.nextLevel);
         AudioManager.instance.Play("BackgroundMusic");
     }

@@ -451,7 +451,7 @@ public class Level3Manager : MonoBehaviour
     }
 
     public void HomeContinueClicked()
-    {
+    { 
         Time.timeScale = 1f;
         MenuButtonsOnScreen = false;
         AudioManager.instance.Stop("HomeButtonAudio");
