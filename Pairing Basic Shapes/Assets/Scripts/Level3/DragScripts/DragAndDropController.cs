@@ -14,6 +14,8 @@ public class DragAndDropController : MonoBehaviour, IPointerDownHandler, IBeginD
 	public string nameOfSprites;
 	public Vector2 initPos;
 	public Canvas canvas2;
+	float positivePosX = 391f;
+	float negativePosX = -391f;
 
 	void Start()
 	{
@@ -33,6 +35,12 @@ public class DragAndDropController : MonoBehaviour, IPointerDownHandler, IBeginD
 	{
 		Debug.Log("OnDrag");
 		rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+		if(eventData.pointerDrag.transform.position.x == positivePosX || eventData.pointerDrag.transform.position.x == negativePosX)
+		{
+			canvasGroup.blocksRaycasts = false;
+			eventData.pointerDrag.GetComponent<RectTransform>().DOAnchorPos(new Vector2(eventData.pointerDrag.GetComponent<DragAndDropController>().initPos.x, eventData.pointerDrag.GetComponent<DragAndDropController>().initPos.y), 0f);
+			canvasGroup.blocksRaycasts = true;
+		}
 	}
 
 	public void OnEndDrag(PointerEventData eventData)

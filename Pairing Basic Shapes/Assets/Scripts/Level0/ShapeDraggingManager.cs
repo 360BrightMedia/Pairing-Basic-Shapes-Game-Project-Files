@@ -23,6 +23,7 @@ public class ShapeDraggingManager : EventTrigger
     private float distance;
     Vector2 offset;
     public bool shapeFinished = false;
+    public int touches;
 
 
     
@@ -32,6 +33,7 @@ public class ShapeDraggingManager : EventTrigger
         screenMaxValues = new Vector2(Screen.width, Screen.height) / 2f;
         shapeXLimit = rectTransform.sizeDelta.x / 2f;
         shapeYLimit = rectTransform.sizeDelta.y / 2f;
+
     }
 
     public void UpdateShapeLimits()
@@ -43,6 +45,8 @@ public class ShapeDraggingManager : EventTrigger
     {
         if (canDrag && !pickedUpShape && !shapeFinished)
         {
+            touches++;
+            if (touches != 1) return;
             canDrop = true;
             pickedUpShape = true;
             dragging = true;
@@ -55,6 +59,7 @@ public class ShapeDraggingManager : EventTrigger
         Debug.Log("Drag Check "+dragging+" / "+ canDrag);
         if (dragging && canDrag)
         {
+            if (touches != 1) return;
             var mousePosition = GetMousePos();
             transform.position = mousePosition - offset;
         }  
@@ -86,6 +91,7 @@ public class ShapeDraggingManager : EventTrigger
         {
             if (canDrop)
             {
+                touches--;
                 DropShape();
             }
             dragging = false;

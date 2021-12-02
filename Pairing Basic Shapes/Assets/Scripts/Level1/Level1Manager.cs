@@ -741,13 +741,26 @@ public class Level1Manager : MonoBehaviour
 
     public void HomeContinueClicked()
     {
-        Time.timeScale = 1f;
-        MenuButtonsOnScreen = false;
-        AudioManager.instance.Stop("HomeButtonAudio");
-        AudioManager.instance.ContinueAudio();
-        hintButton.interactable = false;
-        CanSelectBox = true;
-        homeButtonIcons.SetActive(false);
+        if (Constants.Level1.firstPresentation)
+        {
+            Time.timeScale = 1f;
+            MenuButtonsOnScreen = false;
+            AudioManager.instance.Stop("HomeButtonAudio");
+            AudioManager.instance.ContinueAudio();
+            hintButton.interactable = false;
+            CanSelectBox = false;
+            homeButtonIcons.SetActive(false);
+        }
+		else
+		{
+            Time.timeScale = 1f;
+            MenuButtonsOnScreen = false;
+            AudioManager.instance.Stop("HomeButtonAudio");
+            AudioManager.instance.ContinueAudio();
+            hintButton.interactable = false;
+            CanSelectBox = true;
+            homeButtonIcons.SetActive(false);
+        }
     }
 
     public void ReplayAudioInstructions()
