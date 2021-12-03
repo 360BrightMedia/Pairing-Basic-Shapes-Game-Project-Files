@@ -753,13 +753,46 @@ public class Level1Manager : MonoBehaviour
         }
 		else
 		{
-            Time.timeScale = 1f;
-            MenuButtonsOnScreen = false;
-            AudioManager.instance.Stop("HomeButtonAudio");
-            AudioManager.instance.ContinueAudio();
-            hintButton.interactable = false;
-            CanSelectBox = true;
-            homeButtonIcons.SetActive(false);
+            if (NumberOfWrongAnswer == 1)
+            {
+                Time.timeScale = 1f;
+                MenuButtonsOnScreen = false;
+                AudioManager.instance.Stop("HomeButtonAudio");
+                AudioManager.instance.ContinueAudio();
+                hintButton.interactable = false;
+                CanSelectBox = false;
+                homeButtonIcons.SetActive(false);
+            }
+            else if(NumberOfWrongAnswer == 2)
+			{
+                Time.timeScale = 1f;
+                MenuButtonsOnScreen = false;
+                AudioManager.instance.Stop("HomeButtonAudio");
+                AudioManager.instance.ContinueAudio();
+                hintButton.interactable = false;
+                CanSelectBox = false;
+                homeButtonIcons.SetActive(false);
+            }
+            else if(NumberOfWrongAnswer == 3)
+			{
+                Time.timeScale = 1f;
+                MenuButtonsOnScreen = false;
+                AudioManager.instance.Stop("HomeButtonAudio");
+                AudioManager.instance.ContinueAudio();
+                hintButton.interactable = false;
+                CanSelectBox = false;
+                homeButtonIcons.SetActive(false);
+            }
+			else if(correctShapeHolderIndex == 1)
+			{
+                Time.timeScale = 1f;
+                MenuButtonsOnScreen = false;
+                AudioManager.instance.Stop("HomeButtonAudio");
+                AudioManager.instance.ContinueAudio();
+                hintButton.interactable = false;
+                CanSelectBox = true;
+                homeButtonIcons.SetActive(false);
+            }
         }
     }
 

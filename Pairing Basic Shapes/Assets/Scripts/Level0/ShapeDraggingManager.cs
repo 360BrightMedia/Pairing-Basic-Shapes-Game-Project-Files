@@ -27,10 +27,10 @@ public class ShapeDraggingManager : EventTrigger
     float maxX = 359f;
     float minY = -170f;
     float maxY = 170f;
-    public int touches;
+    TouchScript touchScript;
 
 
-    
+
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -49,13 +49,13 @@ public class ShapeDraggingManager : EventTrigger
     {
         if (canDrag && !pickedUpShape && !shapeFinished)
         {
-            //touches++;
-            //if (touches != 1) return;
-            canDrop = true;
-            pickedUpShape = true;
-            dragging = true;
+             canDrop = true;
+             pickedUpShape = true;
+             dragging = true;
             //StartCoroutine(StartVoiceInstructionAfterTime(15f));
             offset = GetMousePos() - (Vector2)transform.position;
+            //touches++;
+            //if (touches != 1) return;
         }
     }
     public void Update()
@@ -63,10 +63,11 @@ public class ShapeDraggingManager : EventTrigger
         Debug.Log("Drag Check "+dragging+" / "+ canDrag);
         if (dragging && canDrag)
         {
+            Debug.Log(Input.touchCount);
+                var mousePosition = GetMousePos();
+                transform.position = mousePosition - offset;
+                OutOfBounds();
             //if (touches != 1) return;
-            var mousePosition = GetMousePos();
-            transform.position = mousePosition - offset;
-            OutOfBounds();
         }  
     }
 
@@ -96,7 +97,7 @@ public class ShapeDraggingManager : EventTrigger
         {
             if (canDrop)
             {
-                touches--;
+                //touches--;
                 DropShape();
             }
             dragging = false;
