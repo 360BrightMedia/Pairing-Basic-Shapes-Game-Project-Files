@@ -64,9 +64,16 @@ public class ShapeDraggingManager : EventTrigger
         if (dragging && canDrag)
         {
             Debug.Log(Input.touchCount);
+            if(Input.touchCount <= 1)
+			{
                 var mousePosition = GetMousePos();
                 transform.position = mousePosition - offset;
                 OutOfBounds();
+            }
+            else if (Input.touchCount > 1)
+			{
+                pickedUpShape = false;
+			}
             //if (touches != 1) return;
         }  
     }

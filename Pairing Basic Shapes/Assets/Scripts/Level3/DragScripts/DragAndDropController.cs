@@ -16,6 +16,8 @@ public class DragAndDropController : MonoBehaviour, IPointerDownHandler, IBeginD
 	public Canvas canvas2;
 	float positivePosX = 391f;
 	float negativePosX = -391f;
+	//static bool pickUpShape = false;
+	//static bool canDrag = false;
 
 	void Start()
 	{
@@ -26,9 +28,11 @@ public class DragAndDropController : MonoBehaviour, IPointerDownHandler, IBeginD
 
 	public void OnBeginDrag(PointerEventData eventData)
 	{
+		//pickUpShape = true;
+		//canDrag = true;
 		Debug.Log("OnBeginDrag");
 		canvasGroup.blocksRaycasts = false;
-		this.gameObject.transform.parent = canvas2.transform;
+	    this.gameObject.transform.parent = canvas2.transform;
 	}
 
 	public void OnDrag(PointerEventData eventData)
@@ -46,6 +50,8 @@ public class DragAndDropController : MonoBehaviour, IPointerDownHandler, IBeginD
 	public void OnEndDrag(PointerEventData eventData)
 	{
 		Debug.Log("OnEndDrag");
+		//pickUpShape = false;
+		//canDrag = false;
 		canvasGroup.blocksRaycasts = true;
 		if (this.gameObject.transform.position != Level3Manager.instance.Slots[0].transform.position || this.gameObject.transform.position != Level3Manager.instance.Slots[1].transform.position || this.gameObject.transform.position != Level3Manager.instance.Slots[2].transform.position || this.gameObject.transform.position != Level3Manager.instance.Slots[3].transform.position)
 		{

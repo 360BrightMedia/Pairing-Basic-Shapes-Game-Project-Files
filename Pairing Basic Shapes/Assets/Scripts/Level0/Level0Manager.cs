@@ -322,7 +322,7 @@ public class Level0Manager : MonoBehaviour
         }
 
         
-        yield return new WaitForSeconds(AudioManager.instance.Play("CorrectAnswer"));
+        yield return new WaitForSeconds(AudioManager.instance.Play("CorrectAnswer", replay: true));
         if (correctAnswerStreak == 2)
         {
             yield return oneSec;
