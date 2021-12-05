@@ -14,6 +14,7 @@ public class Drag2 : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEnd
 	public string nameOfSprites;
 	public Vector2 initPos;
 	public Canvas canvas2;
+	public bool isDragging = false;
 
 	void Start()
 	{
@@ -25,6 +26,7 @@ public class Drag2 : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEnd
 
 	public void OnBeginDrag(PointerEventData eventData)
 	{
+		isDragging = true;
 		Debug.Log("OnBeginDrag");
 		canvasGroup.blocksRaycasts = false;
 		this.gameObject.transform.parent = canvas2.transform;
@@ -32,8 +34,11 @@ public class Drag2 : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEnd
 
 	public void OnDrag(PointerEventData eventData)
 	{
-		Debug.Log("OnDrag");
-		rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+		if (isDragging)
+		{
+			Debug.Log("OnDrag");
+			rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+		}
 	}
 
 	public void OnEndDrag(PointerEventData eventData)

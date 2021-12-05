@@ -1005,4 +1005,29 @@ public class Level4Manager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
+    public void GameObjectReferences(GameObject game)
+	{
+        Debug.Log(game);
+        for (int i = 0; i < shapes.Length; i++)
+		{
+            if (shapes[i].gameObject != game)
+            {
+                Debug.Log(shapes[i].gameObject.GetComponent<DraggableObjects>().name);
+                shapes[i].gameObject.GetComponent<DraggableObjects>().enabled = false;
+            }
+        }
+	}
+
+    public void EnableAndDisable()
+	{
+        for(int i = 0; i < shapes.Length; i++)
+		{
+            if (shapes[i].gameObject.GetComponent<DraggableObjects>().isSloted == false)
+            {
+                shapes[i].gameObject.GetComponent<DraggableObjects>().enabled = true;
+            }
+
+        }
+	}
+
 }

@@ -13,12 +13,16 @@ public class DraggableObjects : MonoBehaviour, IPointerDownHandler, IBeginDragHa
 	public string nameOfSprite;
 	public Vector2 initPos;
 	public Canvas canvas2;
+	public bool isSloted = false;
+	bool isCurrentlyDragged = false;
 
 	public void OnBeginDrag(PointerEventData eventData)
 	{
+		
 		Debug.Log("OnBeginDrag");
 		canvasGroup.blocksRaycasts = false;
 		this.gameObject.transform.parent = canvas2.transform;
+		isCurrentlyDragged = true;
 	}
 
 	public void OnDrag(PointerEventData eventData)
@@ -40,7 +44,16 @@ public class DraggableObjects : MonoBehaviour, IPointerDownHandler, IBeginDragHa
 
 	public void OnPointerDown(PointerEventData eventData)
 	{
+		if(isCurrentlyDragged)
+		{
+			canvasGroup.blocksRaycasts = false;
+		}
+		else
+		{
+			canvasGroup.blocksRaycasts = true;
+		}
 		Debug.Log("Click");
+		Level4Manager.instance.GameObjectReferences(this.gameObject);
 	}
 
 	// Start is called before the first frame update

@@ -18,13 +18,15 @@ public class EmptySlots : MonoBehaviour, IDropHandler
 		if (eventData.pointerDrag != null)
 		{
 			if(eventData.pointerDrag.GetComponent<DraggableObjects>().nameOfSprite == id)
-			{
+			{				
 				AudioManager.instance.Play("CorrectAnswer", replay: true);
 				eventData.pointerDrag.GetComponent<RectTransform>().transform.parent = eventData.pointerDrag.GetComponent<DraggableObjects>().canvas.transform.GetChild(1).transform;
 				eventData.pointerDrag.transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(true);
 				eventData.pointerDrag.gameObject.GetComponent<DraggableObjects>().canvasGroup.blocksRaycasts = true;
 				Level4Manager.instance.shapesCount++;
 				eventData.pointerDrag.gameObject.GetComponent<DraggableObjects>().enabled = false;
+				eventData.pointerDrag.GetComponent<DraggableObjects>().isSloted = true;
+				Level4Manager.instance.EnableAndDisable();
 				if (Level4Manager.instance.shapesCount == 4)
 				{
 					Level4Manager.instance.setNumber++;
