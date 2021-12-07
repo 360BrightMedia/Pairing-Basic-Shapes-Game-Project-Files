@@ -62,7 +62,7 @@ public class Drag10 : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEn
 			canvasGroup.blocksRaycasts = true;
 		}
 		Debug.Log("Click");
-		Level4Manager.instance.GameObjectReferences(this.gameObject);
+		Level3Manager.instance.GameObjectReferences(this.gameObject, 9);
 	}
 
 

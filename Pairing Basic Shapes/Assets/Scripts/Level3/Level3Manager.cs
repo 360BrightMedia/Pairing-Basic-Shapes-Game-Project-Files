@@ -945,7 +945,7 @@ public class Level3Manager : MonoBehaviour
                 else if (shapesLevel3[8].shapes[j].gameObject != game && question == 8)
                 {
                     Debug.Log(shapesLevel3[8].shapes[j].gameObject.GetComponent<Drag9>().name);
-                    shapesLevel3[8].shapes[j].gameObject.GetComponent<Drag8>().enabled = false;
+                    shapesLevel3[8].shapes[j].gameObject.GetComponent<Drag9>().enabled = false;
                 }
                 else if (shapesLevel3[9].shapes[j].gameObject != game && question == 9)
                 {

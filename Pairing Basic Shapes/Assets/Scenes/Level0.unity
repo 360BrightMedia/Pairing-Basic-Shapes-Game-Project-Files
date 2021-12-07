@@ -4361,5 +4361,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: TouchScript
       objectReference: {fileID: 0}
+    - target: {fileID: 4256392471089487199, guid: 159f8e3b018a6d440bf405a93bf6269c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 159f8e3b018a6d440bf405a93bf6269c, type: 3}
