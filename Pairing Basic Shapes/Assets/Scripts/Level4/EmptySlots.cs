@@ -26,7 +26,7 @@ public class EmptySlots : MonoBehaviour, IDropHandler
 				Level4Manager.instance.shapesCount++;
 				eventData.pointerDrag.gameObject.GetComponent<DraggableObjects>().enabled = false;
 				eventData.pointerDrag.GetComponent<DraggableObjects>().isSloted = true;
-				Level4Manager.instance.EnableAndDisable();
+				
 				if (Level4Manager.instance.shapesCount == 4)
 				{
 					Level4Manager.instance.setNumber++;
@@ -87,6 +87,7 @@ public class EmptySlots : MonoBehaviour, IDropHandler
 				eventData.pointerDrag.GetComponent<RectTransform>().DOAnchorPos(new Vector2(eventData.pointerDrag.GetComponent<DraggableObjects>().initPos.x, eventData.pointerDrag.GetComponent<DraggableObjects>().initPos.y), 0f);
 				StartCoroutine(Wrong());
 			}
+			Level4Manager.instance.EnableAndDisable();
 			eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = this.GetComponent<RectTransform>().anchoredPosition;
 		}
 		
@@ -134,6 +135,11 @@ public class EmptySlots : MonoBehaviour, IDropHandler
 			Level4Manager.instance.InteractaleObjectsParent.transform.GetChild(1).GetComponent<DraggableObjects>().enabled = true;
 			Level4Manager.instance.InteractaleObjectsParent.transform.GetChild(2).GetComponent<DraggableObjects>().enabled = true;
 			Level4Manager.instance.InteractaleObjectsParent.transform.GetChild(3).GetComponent<DraggableObjects>().enabled = true;
+			for(int i = 0; i < Level4Manager.instance.shapes.Length; i++)
+			{
+				Level4Manager.instance.shapes[i].GetComponent<DraggableObjects>().isCurrentlyDragged = false;
+				Level4Manager.instance.shapes[i].GetComponent<DraggableObjects>().isSloted = false;
+			}
 			PlayerPrefs.SetInt("SetNumber", Level4Manager.instance.setNumber);
 			PlayerPrefs.SetInt("CurrentSet", Level4Manager.instance.currentShapes);
 		}
@@ -172,6 +178,11 @@ public class EmptySlots : MonoBehaviour, IDropHandler
 			Level4Manager.instance.NonInteractableBoxParent.transform.GetChild(5).GetComponent<IDs>().id = Level4Manager.instance.upperImages[2].upperImages.transform.GetChild(1).gameObject.name;
 			Level4Manager.instance.NonInteractableBoxParent.transform.GetChild(6).GetComponent<IDs>().id = Level4Manager.instance.upperImages[2].upperImages.transform.GetChild(2).gameObject.name;
 			Level4Manager.instance.NonInteractableBoxParent.transform.GetChild(7).GetComponent<IDs>().id = Level4Manager.instance.upperImages[2].upperImages.transform.GetChild(3).gameObject.name;
+			for (int i = 0; i < Level4Manager.instance.shapes.Length; i++)
+			{
+				Level4Manager.instance.shapes[i].GetComponent<DraggableObjects>().isCurrentlyDragged = false;
+				Level4Manager.instance.shapes[i].GetComponent<DraggableObjects>().isSloted = false;
+			}
 			PlayerPrefs.SetInt("SetNumber", Level4Manager.instance.setNumber);
 			PlayerPrefs.SetInt("CurrentSet", Level4Manager.instance.currentShapes);
 		}
@@ -209,6 +220,11 @@ public class EmptySlots : MonoBehaviour, IDropHandler
 			Level4Manager.instance.NonInteractableBoxParent.transform.GetChild(5).GetComponent<IDs>().id = Level4Manager.instance.upperImages[3].upperImages.transform.GetChild(1).gameObject.name;
 			Level4Manager.instance.NonInteractableBoxParent.transform.GetChild(6).GetComponent<IDs>().id = Level4Manager.instance.upperImages[3].upperImages.transform.GetChild(2).gameObject.name;
 			Level4Manager.instance.NonInteractableBoxParent.transform.GetChild(7).GetComponent<IDs>().id = Level4Manager.instance.upperImages[3].upperImages.transform.GetChild(3).gameObject.name;
+			for (int i = 0; i < Level4Manager.instance.shapes.Length; i++)
+			{
+				Level4Manager.instance.shapes[i].GetComponent<DraggableObjects>().isCurrentlyDragged = false;
+				Level4Manager.instance.shapes[i].GetComponent<DraggableObjects>().isSloted = false;
+			}
 			PlayerPrefs.SetInt("SetNumber", Level4Manager.instance.setNumber);
 			PlayerPrefs.SetInt("CurrentSet", Level4Manager.instance.currentShapes);
 		}
@@ -247,6 +263,11 @@ public class EmptySlots : MonoBehaviour, IDropHandler
 			Level4Manager.instance.NonInteractableBoxParent.transform.GetChild(5).GetComponent<IDs>().id = Level4Manager.instance.upperImages[4].upperImages.transform.GetChild(1).gameObject.name;
 			Level4Manager.instance.NonInteractableBoxParent.transform.GetChild(6).GetComponent<IDs>().id = Level4Manager.instance.upperImages[4].upperImages.transform.GetChild(2).gameObject.name;
 			Level4Manager.instance.NonInteractableBoxParent.transform.GetChild(7).GetComponent<IDs>().id = Level4Manager.instance.upperImages[4].upperImages.transform.GetChild(3).gameObject.name;
+			for (int i = 0; i < Level4Manager.instance.shapes.Length; i++)
+			{
+				Level4Manager.instance.shapes[i].GetComponent<DraggableObjects>().isCurrentlyDragged = false;
+				Level4Manager.instance.shapes[i].GetComponent<DraggableObjects>().isSloted = false;
+			}
 			PlayerPrefs.SetInt("SetNumber", Level4Manager.instance.setNumber);
 			PlayerPrefs.SetInt("CurrentSet", Level4Manager.instance.currentShapes);
 		}
@@ -285,6 +306,11 @@ public class EmptySlots : MonoBehaviour, IDropHandler
 			Level4Manager.instance.NonInteractableBoxParent.transform.GetChild(5).GetComponent<IDs>().id = Level4Manager.instance.upperImages[5].upperImages.transform.GetChild(1).gameObject.name;
 			Level4Manager.instance.NonInteractableBoxParent.transform.GetChild(6).GetComponent<IDs>().id = Level4Manager.instance.upperImages[5].upperImages.transform.GetChild(2).gameObject.name;
 			Level4Manager.instance.NonInteractableBoxParent.transform.GetChild(7).GetComponent<IDs>().id = Level4Manager.instance.upperImages[5].upperImages.transform.GetChild(3).gameObject.name;
+			for (int i = 0; i < Level4Manager.instance.shapes.Length; i++)
+			{
+				Level4Manager.instance.shapes[i].GetComponent<DraggableObjects>().isCurrentlyDragged = false;
+				Level4Manager.instance.shapes[i].GetComponent<DraggableObjects>().isSloted = false;
+			}
 			PlayerPrefs.SetInt("SetNumber", Level4Manager.instance.setNumber);
 			PlayerPrefs.SetInt("CurrentSet", Level4Manager.instance.currentShapes);
 		}
@@ -323,6 +349,11 @@ public class EmptySlots : MonoBehaviour, IDropHandler
 			Level4Manager.instance.NonInteractableBoxParent.transform.GetChild(5).GetComponent<IDs>().id = Level4Manager.instance.upperImages[6].upperImages.transform.GetChild(1).gameObject.name;
 			Level4Manager.instance.NonInteractableBoxParent.transform.GetChild(6).GetComponent<IDs>().id = Level4Manager.instance.upperImages[6].upperImages.transform.GetChild(2).gameObject.name;
 			Level4Manager.instance.NonInteractableBoxParent.transform.GetChild(7).GetComponent<IDs>().id = Level4Manager.instance.upperImages[6].upperImages.transform.GetChild(3).gameObject.name;
+			for (int i = 0; i < Level4Manager.instance.shapes.Length; i++)
+			{
+				Level4Manager.instance.shapes[i].GetComponent<DraggableObjects>().isCurrentlyDragged = false;
+				Level4Manager.instance.shapes[i].GetComponent<DraggableObjects>().isSloted = false;
+			}
 			PlayerPrefs.SetInt("SetNumber", Level4Manager.instance.setNumber);
 			PlayerPrefs.SetInt("CurrentSet", Level4Manager.instance.currentShapes);
 		}
@@ -361,6 +392,11 @@ public class EmptySlots : MonoBehaviour, IDropHandler
 			Level4Manager.instance.NonInteractableBoxParent.transform.GetChild(5).GetComponent<IDs>().id = Level4Manager.instance.upperImages[7].upperImages.transform.GetChild(1).gameObject.name;
 			Level4Manager.instance.NonInteractableBoxParent.transform.GetChild(6).GetComponent<IDs>().id = Level4Manager.instance.upperImages[7].upperImages.transform.GetChild(2).gameObject.name;
 			Level4Manager.instance.NonInteractableBoxParent.transform.GetChild(7).GetComponent<IDs>().id = Level4Manager.instance.upperImages[7].upperImages.transform.GetChild(3).gameObject.name;
+			for (int i = 0; i < Level4Manager.instance.shapes.Length; i++)
+			{
+				Level4Manager.instance.shapes[i].GetComponent<DraggableObjects>().isCurrentlyDragged = false;
+				Level4Manager.instance.shapes[i].GetComponent<DraggableObjects>().isSloted = false;
+			}
 			PlayerPrefs.SetInt("SetNumber", Level4Manager.instance.setNumber);
 			PlayerPrefs.SetInt("CurrentSet", Level4Manager.instance.currentShapes);
 		}
@@ -399,6 +435,11 @@ public class EmptySlots : MonoBehaviour, IDropHandler
 			Level4Manager.instance.NonInteractableBoxParent.transform.GetChild(5).GetComponent<IDs>().id = Level4Manager.instance.upperImages[8].upperImages.transform.GetChild(1).gameObject.name;
 			Level4Manager.instance.NonInteractableBoxParent.transform.GetChild(6).GetComponent<IDs>().id = Level4Manager.instance.upperImages[8].upperImages.transform.GetChild(2).gameObject.name;
 			Level4Manager.instance.NonInteractableBoxParent.transform.GetChild(7).GetComponent<IDs>().id = Level4Manager.instance.upperImages[8].upperImages.transform.GetChild(3).gameObject.name;
+			for (int i = 0; i < Level4Manager.instance.shapes.Length; i++)
+			{
+				Level4Manager.instance.shapes[i].GetComponent<DraggableObjects>().isCurrentlyDragged = false;
+				Level4Manager.instance.shapes[i].GetComponent<DraggableObjects>().isSloted = false;
+			}
 			PlayerPrefs.SetInt("SetNumber", Level4Manager.instance.setNumber);
 			PlayerPrefs.SetInt("CurrentSet", Level4Manager.instance.currentShapes);
 		}
@@ -437,6 +478,11 @@ public class EmptySlots : MonoBehaviour, IDropHandler
 			Level4Manager.instance.NonInteractableBoxParent.transform.GetChild(5).GetComponent<IDs>().id = Level4Manager.instance.upperImages[9].upperImages.transform.GetChild(1).gameObject.name;
 			Level4Manager.instance.NonInteractableBoxParent.transform.GetChild(6).GetComponent<IDs>().id = Level4Manager.instance.upperImages[9].upperImages.transform.GetChild(2).gameObject.name;
 			Level4Manager.instance.NonInteractableBoxParent.transform.GetChild(7).GetComponent<IDs>().id = Level4Manager.instance.upperImages[9].upperImages.transform.GetChild(3).gameObject.name;
+			for (int i = 0; i < Level4Manager.instance.shapes.Length; i++)
+			{
+				Level4Manager.instance.shapes[i].GetComponent<DraggableObjects>().isCurrentlyDragged = false;
+				Level4Manager.instance.shapes[i].GetComponent<DraggableObjects>().isSloted = false;
+			}
 			PlayerPrefs.SetInt("SetNumber", Level4Manager.instance.setNumber);
 			PlayerPrefs.SetInt("CurrentSet", Level4Manager.instance.currentShapes);
 		}
@@ -474,6 +520,11 @@ public class EmptySlots : MonoBehaviour, IDropHandler
 			Level4Manager.instance.NonInteractableBoxParent.transform.GetChild(5).GetComponent<IDs>().id = Level4Manager.instance.upperImages[10].upperImages.transform.GetChild(1).gameObject.name;
 			Level4Manager.instance.NonInteractableBoxParent.transform.GetChild(6).GetComponent<IDs>().id = Level4Manager.instance.upperImages[10].upperImages.transform.GetChild(2).gameObject.name;
 			Level4Manager.instance.NonInteractableBoxParent.transform.GetChild(7).GetComponent<IDs>().id = Level4Manager.instance.upperImages[10].upperImages.transform.GetChild(3).gameObject.name;
+			for (int i = 0; i < Level4Manager.instance.shapes.Length; i++)
+			{
+				Level4Manager.instance.shapes[i].GetComponent<DraggableObjects>().isCurrentlyDragged = false;
+				Level4Manager.instance.shapes[i].GetComponent<DraggableObjects>().isSloted = false;
+			}
 			PlayerPrefs.SetInt("SetNumber", Level4Manager.instance.setNumber);
 			PlayerPrefs.SetInt("CurrentSet", Level4Manager.instance.currentShapes);
 		}
@@ -512,6 +563,11 @@ public class EmptySlots : MonoBehaviour, IDropHandler
 			Level4Manager.instance.NonInteractableBoxParent.transform.GetChild(5).GetComponent<IDs>().id = Level4Manager.instance.upperImages[11].upperImages.transform.GetChild(1).gameObject.name;
 			Level4Manager.instance.NonInteractableBoxParent.transform.GetChild(6).GetComponent<IDs>().id = Level4Manager.instance.upperImages[11].upperImages.transform.GetChild(2).gameObject.name;
 			Level4Manager.instance.NonInteractableBoxParent.transform.GetChild(7).GetComponent<IDs>().id = Level4Manager.instance.upperImages[11].upperImages.transform.GetChild(3).gameObject.name;
+			for (int i = 0; i < Level4Manager.instance.shapes.Length; i++)
+			{
+				Level4Manager.instance.shapes[i].GetComponent<DraggableObjects>().isCurrentlyDragged = false;
+				Level4Manager.instance.shapes[i].GetComponent<DraggableObjects>().isSloted = false;
+			}
 			PlayerPrefs.SetInt("SetNumber", Level4Manager.instance.setNumber);
 			PlayerPrefs.SetInt("CurrentSet", Level4Manager.instance.currentShapes);
 		}

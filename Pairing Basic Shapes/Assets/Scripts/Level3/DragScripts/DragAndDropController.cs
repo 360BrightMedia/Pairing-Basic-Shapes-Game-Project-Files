@@ -16,6 +16,8 @@ public class DragAndDropController : MonoBehaviour, IPointerDownHandler, IBeginD
 	public Canvas canvas2;
 	float positivePosX = 391f;
 	float negativePosX = -391f;
+	public bool isSloted = false;
+	public bool isCurrentlyDragged = false;
 	//static bool pickUpShape = false;
 	//static bool canDrag = false;
 
@@ -33,6 +35,7 @@ public class DragAndDropController : MonoBehaviour, IPointerDownHandler, IBeginD
 		Debug.Log("OnBeginDrag");
 		canvasGroup.blocksRaycasts = false;
 	    this.gameObject.transform.parent = canvas2.transform;
+		isCurrentlyDragged = true;
 	}
 
 	public void OnDrag(PointerEventData eventData)
@@ -57,12 +60,22 @@ public class DragAndDropController : MonoBehaviour, IPointerDownHandler, IBeginD
 		{
 			AudioManager.instance.Play("WrongAnswer");
 			eventData.pointerDrag.GetComponent<RectTransform>().DOAnchorPos(new Vector2(eventData.pointerDrag.GetComponent<DragAndDropController>().initPos.x, eventData.pointerDrag.GetComponent<DragAndDropController>().initPos.y), 0f);
+			Level3Manager.instance.EnableAndDisable(0);
 		}
 	}
 
 	public void OnPointerDown(PointerEventData eventData)
 	{
-		Debug.Log("OnPointerDown");
+		if (isCurrentlyDragged)
+		{
+			canvasGroup.blocksRaycasts = false;
+		}
+		else
+		{
+			canvasGroup.blocksRaycasts = true;
+		}
+		Debug.Log("Click");
+		Level3Manager.instance.GameObjectReferences(this.gameObject, 0);
 	}
 
 	

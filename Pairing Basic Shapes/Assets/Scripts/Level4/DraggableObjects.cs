@@ -14,7 +14,7 @@ public class DraggableObjects : MonoBehaviour, IPointerDownHandler, IBeginDragHa
 	public Vector2 initPos;
 	public Canvas canvas2;
 	public bool isSloted = false;
-	bool isCurrentlyDragged = false;
+	public bool isCurrentlyDragged = false;
 
 	public void OnBeginDrag(PointerEventData eventData)
 	{
@@ -39,6 +39,7 @@ public class DraggableObjects : MonoBehaviour, IPointerDownHandler, IBeginDragHa
 		{
 			AudioManager.instance.Play("WrongAnswer");
 			eventData.pointerDrag.GetComponent<RectTransform>().DOAnchorPos(new Vector2(eventData.pointerDrag.GetComponent<DraggableObjects>().initPos.x, eventData.pointerDrag.GetComponent<DraggableObjects>().initPos.y), 0f);
+			Level4Manager.instance.EnableAndDisable();
 		}
 	}
 

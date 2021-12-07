@@ -894,4 +894,117 @@ public class Level3Manager : MonoBehaviour
             }
         }
     }
+
+    public void GameObjectReferences(GameObject game, int question)
+    {
+        Debug.Log(game);
+        for (int i = 0; i < shapesLevel3.Count; i++)
+        {
+            for(int j = 0; j < shapesLevel3[i].shapes.Length; j++)
+			{
+                if (shapesLevel3[0].shapes[j].gameObject != game && question == 0)
+                {
+                    Debug.Log(shapesLevel3[0].shapes[j].gameObject.GetComponent<DragAndDropController>().name);
+                    shapesLevel3[0].shapes[j].gameObject.GetComponent<DragAndDropController>().enabled = false;
+                }
+                else if (shapesLevel3[1].shapes[j].gameObject != game && question == 1)
+                {
+                    Debug.Log(shapesLevel3[1].shapes[j].gameObject.GetComponent<Drag2>().name);
+                    shapesLevel3[1].shapes[j].gameObject.GetComponent<Drag2>().enabled = false;
+                }
+                else if (shapesLevel3[2].shapes[j].gameObject != game && question == 2)
+                {
+                    Debug.Log(shapesLevel3[2].shapes[j].gameObject.GetComponent<Drag3>().name);
+                    shapesLevel3[2].shapes[j].gameObject.GetComponent<Drag3>().enabled = false;
+                }
+                else if (shapesLevel3[3].shapes[j].gameObject != game && question == 3)
+                {
+                    Debug.Log(shapesLevel3[3].shapes[j].gameObject.GetComponent<Drag4>().name);
+                    shapesLevel3[3].shapes[j].gameObject.GetComponent<Drag4>().enabled = false;
+                }
+                else if (shapesLevel3[4].shapes[j].gameObject != game && question == 4)
+                {
+                    Debug.Log(shapesLevel3[4].shapes[j].gameObject.GetComponent<Drag5>().name);
+                    shapesLevel3[4].shapes[j].gameObject.GetComponent<Drag5>().enabled = false;
+                }
+                else if (shapesLevel3[5].shapes[j].gameObject != game && question == 5)
+                {
+                    Debug.Log(shapesLevel3[5].shapes[j].gameObject.GetComponent<Drag6>().name);
+                    shapesLevel3[5].shapes[j].gameObject.GetComponent<Drag6>().enabled = false;
+                }
+                else if (shapesLevel3[6].shapes[j].gameObject != game && question == 6)
+                {
+                    Debug.Log(shapesLevel3[6].shapes[j].gameObject.GetComponent<Drag7>().name);
+                    shapesLevel3[6].shapes[j].gameObject.GetComponent<Drag7>().enabled = false;
+                }
+                else if (shapesLevel3[7].shapes[j].gameObject != game && question == 7)
+                {
+                    Debug.Log(shapesLevel3[7].shapes[j].gameObject.GetComponent<Drag8>().name);
+                    shapesLevel3[7].shapes[j].gameObject.GetComponent<Drag8>().enabled = false;
+                }
+                else if (shapesLevel3[8].shapes[j].gameObject != game && question == 8)
+                {
+                    Debug.Log(shapesLevel3[8].shapes[j].gameObject.GetComponent<Drag9>().name);
+                    shapesLevel3[8].shapes[j].gameObject.GetComponent<Drag8>().enabled = false;
+                }
+                else if (shapesLevel3[9].shapes[j].gameObject != game && question == 9)
+                {
+                    Debug.Log(shapesLevel3[9].shapes[j].gameObject.GetComponent<Drag10>().name);
+                    shapesLevel3[9].shapes[j].gameObject.GetComponent<Drag10>().enabled = false;
+                }
+            }
+        }
+    }
+
+    public void EnableAndDisable(int question)
+    {
+        for (int i = 0; i < shapesLevel3.Count; i++)
+        {
+            for(int j = 0; j < shapesLevel3[i].shapes.Length; j++)
+			{
+                if (shapesLevel3[0].shapes[j].gameObject.GetComponent<DragAndDropController>().isSloted == false && question == 0)
+                {
+                    shapesLevel3[0].shapes[j].gameObject.GetComponent<DragAndDropController>().enabled = true;
+                }
+                else if (shapesLevel3[1].shapes[j].gameObject.GetComponent<Drag2>().isSloted == false && question == 1)
+                {
+                    shapesLevel3[1].shapes[j].gameObject.GetComponent<Drag2>().enabled = true;
+                }
+                else if (shapesLevel3[2].shapes[j].gameObject.GetComponent<Drag3>().isSloted == false && question == 2)
+                {
+                    shapesLevel3[2].shapes[j].gameObject.GetComponent<Drag3>().enabled = true;
+                }
+                else if (shapesLevel3[3].shapes[j].gameObject.GetComponent<Drag4>().isSloted == false && question == 3)
+                {
+                    shapesLevel3[3].shapes[j].gameObject.GetComponent<Drag4>().enabled = true;
+                }
+                else if (shapesLevel3[4].shapes[j].gameObject.GetComponent<Drag5>().isSloted == false && question == 4)
+                {
+                    shapesLevel3[4].shapes[j].gameObject.GetComponent<Drag5>().enabled = true;
+                }
+                else if (shapesLevel3[5].shapes[j].gameObject.GetComponent<Drag6>().isSloted == false && question == 5)
+                {
+                    shapesLevel3[5].shapes[j].gameObject.GetComponent<Drag6>().enabled = true;
+                }
+                else if (shapesLevel3[6].shapes[j].gameObject.GetComponent<Drag7>().isSloted == false && question == 6)
+                {
+                    shapesLevel3[6].shapes[j].gameObject.GetComponent<Drag7>().enabled = true;
+                }
+                else if (shapesLevel3[7].shapes[j].gameObject.GetComponent<Drag8>().isSloted == false && question == 7)
+                {
+                    shapesLevel3[7].shapes[j].gameObject.GetComponent<Drag8>().enabled = true;
+                }
+                else if (shapesLevel3[8].shapes[j].gameObject.GetComponent<Drag9>().isSloted == false && question == 8)
+                {
+                    shapesLevel3[8].shapes[j].gameObject.GetComponent<Drag9>().enabled = true;
+                }
+                else if (shapesLevel3[9].shapes[j].gameObject.GetComponent<Drag10>().isSloted == false && question == 9)
+                {
+                    shapesLevel3[9].shapes[j].gameObject.GetComponent<Drag10>().enabled = true;
+                }
+            }
+
+        }
+    }
+
 }

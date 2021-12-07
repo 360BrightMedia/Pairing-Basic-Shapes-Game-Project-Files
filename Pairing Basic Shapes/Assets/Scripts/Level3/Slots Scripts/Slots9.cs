@@ -24,6 +24,7 @@ public class Slots9 : MonoBehaviour, IDropHandler
 				eventData.pointerDrag.gameObject.transform.parent = eventData.pointerDrag.GetComponent<Drag10>().canvas.transform.GetChild(18).transform;
 				eventData.pointerDrag.gameObject.GetComponent<Drag10>().canvasGroup.blocksRaycasts = true;
 				Level3Manager.instance.numberOfShapesDragged++;
+				eventData.pointerDrag.GetComponent<Drag10>().isSloted = true;
 				Debug.Log(Level3Manager.instance.numberOfShapesDragged);
 				if (Level3Manager.instance.numberOfShapesDragged == 12)
 				{
@@ -60,6 +61,7 @@ public class Slots9 : MonoBehaviour, IDropHandler
 				eventData.pointerDrag.gameObject.SetActive(true);
 				StartCoroutine(WrongAnswer());
 			}
+			Level3Manager.instance.EnableAndDisable(9);
 			eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = this.GetComponent<RectTransform>().anchoredPosition;
 		}
 	}

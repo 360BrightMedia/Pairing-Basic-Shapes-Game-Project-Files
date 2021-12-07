@@ -14,6 +14,8 @@ public class Drag10 : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEn
 	public string nameOfSprites;
 	public Vector2 initPos;
 	public Canvas canvas2;
+	public bool isSloted = false;
+	public bool isCurrentlyDragged = false;
 
 	void Start()
 	{
@@ -28,6 +30,7 @@ public class Drag10 : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEn
 		Debug.Log("OnBeginDrag");
 		canvasGroup.blocksRaycasts = false;
 		this.gameObject.transform.parent = canvas2.transform;
+		isCurrentlyDragged = true;
 	}
 
 	public void OnDrag(PointerEventData eventData)
@@ -44,12 +47,22 @@ public class Drag10 : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEn
 		{
 			AudioManager.instance.Play("WrongAnswer");
 			eventData.pointerDrag.GetComponent<RectTransform>().DOAnchorPos(new Vector2(eventData.pointerDrag.GetComponent<Drag10>().initPos.x, eventData.pointerDrag.GetComponent<Drag10>().initPos.y), 0f);
+			Level3Manager.instance.EnableAndDisable(9);
 		}
 	}
 
 	public void OnPointerDown(PointerEventData eventData)
 	{
-		Debug.Log("OnPointerDown");
+		if (isCurrentlyDragged)
+		{
+			canvasGroup.blocksRaycasts = false;
+		}
+		else
+		{
+			canvasGroup.blocksRaycasts = true;
+		}
+		Debug.Log("Click");
+		Level4Manager.instance.GameObjectReferences(this.gameObject);
 	}
 
 

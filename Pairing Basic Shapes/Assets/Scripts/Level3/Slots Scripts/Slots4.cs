@@ -24,7 +24,8 @@ public class Slots4 : MonoBehaviour, IDropHandler
 				eventData.pointerDrag.gameObject.transform.parent = eventData.pointerDrag.GetComponent<Drag5>().canvas.transform.GetChild(13).transform;
 				eventData.pointerDrag.gameObject.GetComponent<Drag5>().canvasGroup.blocksRaycasts = true;
 				Level3Manager.instance.numberOfShapesDragged++;
-				if(Level3Manager.instance.numberOfShapesDragged == 12)
+				eventData.pointerDrag.GetComponent<Drag5>().isSloted = true;
+				if (Level3Manager.instance.numberOfShapesDragged == 12)
 				{
 					Level3Manager.instance.setNumber++;
 					StartCoroutine(WaitForShapes2());
@@ -44,6 +45,7 @@ public class Slots4 : MonoBehaviour, IDropHandler
 				eventData.pointerDrag.gameObject.SetActive(true);
 				StartCoroutine(WrongAnswer());
 			}
+			Level3Manager.instance.EnableAndDisable(4);
 			eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = this.GetComponent<RectTransform>().anchoredPosition;
 		}
 	}
@@ -80,6 +82,8 @@ public class Slots4 : MonoBehaviour, IDropHandler
 				Level3Manager.instance.Slots[21].gameObject.SetActive(true);
 				Level3Manager.instance.Slots[22].gameObject.SetActive(true);
 				Level3Manager.instance.Slots[23].gameObject.SetActive(true);
+				Level3Manager.instance.shapesLevel3[4].shapes[j].GetComponent<Drag5>().isCurrentlyDragged = false;
+				Level3Manager.instance.shapesLevel3[4].shapes[j].GetComponent<Drag5>().isSloted = false;
 			}
 		}
 		Level3Manager.instance.StartVoiceInstructionCoroutine();
