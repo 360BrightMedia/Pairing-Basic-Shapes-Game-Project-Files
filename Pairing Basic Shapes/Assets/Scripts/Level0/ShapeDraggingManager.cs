@@ -28,6 +28,8 @@ public class ShapeDraggingManager : EventTrigger
     float minY = -170f;
     float maxY = 170f;
     TouchScript touchScript;
+    public bool isSloted = false;
+    public bool isCurrentlyDragged = false;
 
 
 
@@ -57,23 +59,25 @@ public class ShapeDraggingManager : EventTrigger
             //touches++;
             //if (touches != 1) return;
         }
+		if (isCurrentlyDragged)
+		{
+            pickedUpShape = true;
+		}
+		else
+		{
+            pickedUpShape = false;
+		}
+        Level0Manager.instance.GameObjectReferences(this.gameObject);
     }
     public void Update()
     {
         Debug.Log("Drag Check "+dragging+" / "+ canDrag);
         if (dragging && canDrag)
-        {
-            Debug.Log(Input.touchCount);
-            if(Input.touchCount <= 1)
-			{
-                var mousePosition = GetMousePos();
-                transform.position = mousePosition - offset;
-                OutOfBounds();
-            }
-            else if (Input.touchCount > 1)
-			{
-                pickedUpShape = false;
-			}
+        { 
+            var mousePosition = GetMousePos();
+            transform.position = mousePosition - offset;
+            isCurrentlyDragged = true;
+            OutOfBounds();
             //if (touches != 1) return;
         }  
     }
@@ -109,6 +113,7 @@ public class ShapeDraggingManager : EventTrigger
             }
             dragging = false;
             canDrag = true;
+            Level0Manager.instance.EnableAndDisable();
         }
     }
 

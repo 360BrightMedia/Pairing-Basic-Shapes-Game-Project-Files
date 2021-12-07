@@ -219,7 +219,7 @@ public class Level2GM : MonoBehaviour
             sets[0].SetActive(true);
             boxParent.SetActive(true);
         }
-        else if (Constants.Level2.canLoadSavedScene)
+        if (Constants.Level2.canLoadSavedScene)
         {
             mascotOnScreen = false;
             mascot.gameObject.SetActive(false);

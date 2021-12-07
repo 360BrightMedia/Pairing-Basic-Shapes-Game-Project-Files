@@ -481,4 +481,30 @@ public class Level0Manager : MonoBehaviour
         ShapeDraggingManager.wrongAnswer -= WrongAnswer;
     }
 
+    public void GameObjectReferences(GameObject game)
+    {
+        Debug.Log(game);
+        for (int i = 0; i < shapeRects.Length; i++)
+        {
+            if (shapeRects[i].gameObject != game)
+            {
+                Debug.Log(shapeRects[i].gameObject.GetComponent<ShapeDraggingManager>().name);
+                shapeRects[i].gameObject.GetComponent<ShapeDraggingManager>().enabled = false;
+            }
+        }
+    }
+
+    public void EnableAndDisable()
+    {
+        for (int i = 0; i < shapeRects.Length; i++)
+        {
+            if (shapeRects[i].gameObject.GetComponent<ShapeDraggingManager>().isSloted == false)
+            {
+                shapeRects[i].gameObject.GetComponent<ShapeDraggingManager>().enabled = true;
+            }
+
+        }
+    }
+
+
 }

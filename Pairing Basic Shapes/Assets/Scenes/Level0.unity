@@ -2874,6 +2874,8 @@ MonoBehaviour:
   canDrop: 0
   pickedUpShapeNumber: -1
   shapeFinished: 0
+  isSloted: 0
+  isCurrentlyDragged: 0
 --- !u!114 &1157640316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3473,6 +3475,8 @@ MonoBehaviour:
   canDrop: 0
   pickedUpShapeNumber: -1
   shapeFinished: 0
+  isSloted: 0
+  isCurrentlyDragged: 0
 --- !u!61 &1487829962
 BoxCollider2D:
   m_ObjectHideFlags: 0
